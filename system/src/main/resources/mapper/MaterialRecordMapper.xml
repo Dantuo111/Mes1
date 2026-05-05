@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.mapper.MaterialRecordMapper">
+
+    <resultMap id="BaseResultMap" type="com.app.entity.MaterialRecord">
+        <id column="id" property="id"/>
+        <result column="material_id" property="materialId"/>
+        <result column="type" property="type"/>
+        <result column="quantity" property="quantity"/>
+        <result column="before_quantity" property="beforeQuantity"/>
+        <result column="after_quantity" property="afterQuantity"/>
+        <result column="operate_time" property="operateTime"/>
+        <result column="create_time" property="createTime"/>
+        <result column="material_name" property="materialName"/>
+        <result column="material_code" property="materialCode"/>
+    </resultMap>
+
+    <select id="selectByMaterialId" resultMap="BaseResultMap">
+        SELECT mr.*, m.name AS material_name, m.code AS material_code
+        FROM material_record mr
+        LEFT JOIN material m ON mr.material_id = m.id
+        WHERE mr.material_id = #{materialId}
+        ORDER BY mr.create_time DESC
+    </select>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        SELECT mr.*, m.name AS material_name, m.code AS material_code
+        FROM material_record mr
+        LEFT JOIN material m ON mr.material_id = m.id
+        ORDER BY mr.create_time DESC
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO material_record (material_id, type, quantity, before_quantity, after_quantity, operate_time)
+        VALUES (#{materialId}, #{type}, #{quantity}, #{beforeQuantity}, #{afterQuantity}, #{operateTime})
+    </insert>
+
+</mapper>

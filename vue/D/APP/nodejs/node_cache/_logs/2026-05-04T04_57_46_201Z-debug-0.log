@@ -1,0 +1,38 @@
+0 verbose cli D:\APP\nodejs\node.exe D:\APP\nodejs\node_modules\npm\bin\npm-cli.js
+0 verbose cli D:\APP\nodejs\node.exe D:\APP\nodejs\node_modules\npm\bin\npm-cli.js
+1 info using npm@11.9.0
+1 info using npm@11.9.0
+2 info using node@v24.14.0
+3 silly config load:file:D:\APP\nodejs\node_modules\npm\npmrc
+2 info using node@v24.14.0
+3 silly config load:file:D:\APP\nodejs\node_modules\npm\npmrc
+4 silly config load:file:d:\Downloads\中小型制造企业生产执行系统\vue\.npmrc
+5 silly config load:file:C:\Users\dn\.npmrc
+4 silly config load:file:d:\Downloads\中小型制造企业生产执行系统\vue\.npmrc
+6 silly config load:file:d:\Downloads\中小型制造企业生产执行系统\vue\D\APP\nodejs\node_global\etc\npmrc
+5 silly config load:file:C:\Users\dn\.npmrc
+6 silly config load:file:d:\Downloads\中小型制造企业生产执行系统\vue\D\APP\nodejs\node_global\etc\npmrc
+7 verbose title npm view @element-plus/icons-vue@latest description homepage version time
+7 verbose title npm ls @element-plus/icons-vue
+8 verbose argv "view" "--json" "--" "@element-plus/icons-vue@latest" "description" "homepage" "version" "time"
+8 verbose argv "ls" "--json" "--depth" "0" "--" "@element-plus/icons-vue"
+9 verbose logfile logs-max:10 dir:d:\Downloads\中小型制造企业生产执行系统\vue\D\APP\nodejs\node_cache\_logs\2026-05-04T04_57_46_201Z-
+9 verbose logfile logs-max:10 dir:d:\Downloads\中小型制造企业生产执行系统\vue\D\APP\nodejs\node_cache\_logs\2026-05-04T04_57_46_201Z-
+10 verbose logfile d:\Downloads\中小型制造企业生产执行系统\vue\D\APP\nodejs\node_cache\_logs\2026-05-04T04_57_46_201Z-debug-0.log
+10 verbose logfile d:\Downloads\中小型制造企业生产执行系统\vue\D\APP\nodejs\node_cache\_logs\2026-05-04T04_57_46_201Z-debug-0.log
+11 silly logfile done cleaning log files
+11 silly logfile done cleaning log files
+12 silly packumentCache heap:4496293888 maxSize:1124073472 maxEntrySize:562036736
+12 http fetch GET 200 https://registry.npmmirror.com/@element-plus%2ficons-vue 219ms (cache miss)
+13 verbose cwd d:\Downloads\中小型制造企业生产执行系统\vue
+14 verbose os Windows_NT 10.0.22631
+15 verbose node v24.14.0
+16 verbose npm  v11.9.0
+17 verbose exit 0
+18 info ok
+13 verbose cwd d:\Downloads\中小型制造企业生产执行系统\vue
+14 verbose os Windows_NT 10.0.22631
+15 verbose node v24.14.0
+16 verbose npm  v11.9.0
+17 verbose exit 0
+18 info ok

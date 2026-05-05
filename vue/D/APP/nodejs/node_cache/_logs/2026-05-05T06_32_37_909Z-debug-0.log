@@ -1,0 +1,19 @@
+0 verbose cli D:\APP\nodejs\node.exe D:\APP\nodejs\node_modules\npm\bin\npm-cli.js
+1 info using npm@11.9.0
+2 info using node@v24.14.0
+3 silly config load:file:D:\APP\nodejs\node_modules\npm\npmrc
+4 silly config load:file:d:\Downloads\中小型制造企业生产执行系统\vue\.npmrc
+5 silly config load:file:C:\Users\dn\.npmrc
+6 silly config load:file:d:\Downloads\中小型制造企业生产执行系统\vue\D\APP\nodejs\node_global\etc\npmrc
+7 verbose title npm ls @iconify/vue
+8 verbose argv "ls" "--json" "--depth" "0" "--" "@iconify/vue"
+9 verbose logfile logs-max:10 dir:d:\Downloads\中小型制造企业生产执行系统\vue\D\APP\nodejs\node_cache\_logs\2026-05-05T06_32_37_909Z-
+10 verbose logfile d:\Downloads\中小型制造企业生产执行系统\vue\D\APP\nodejs\node_cache\_logs\2026-05-05T06_32_37_909Z-debug-0.log
+11 silly logfile done cleaning log files
+12 silly packumentCache heap:4496293888 maxSize:1124073472 maxEntrySize:562036736
+13 verbose cwd d:\Downloads\中小型制造企业生产执行系统\vue
+14 verbose os Windows_NT 10.0.22631
+15 verbose node v24.14.0
+16 verbose npm  v11.9.0
+17 verbose exit 0
+18 info ok

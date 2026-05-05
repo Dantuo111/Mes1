@@ -1,0 +1,101 @@
+/* 全局样式 - 浅色系配色方案 */
+:root {
+  --primary-color: #2e7d32;
+  --primary-light: #4caf50;
+  --primary-dark: #1b5e20;
+  --accent-color: #ff8f00;
+  --bg-color: #f5f6f8;
+  --card-bg: #ffffff;
+  --text-primary: #2c3e50;
+  --text-secondary: #606266;
+  --text-muted: #909399;
+  --border-color: #e4e7ed;
+  --success-color: #67c23a;
+  --warning-color: #e6a23c;
+  --danger-color: #f56c6c;
+  --info-color: #909399;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;
+  color: var(--text-primary);
+  background: var(--bg-color);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+/* Element Plus 主题覆盖 */
+.el-button--primary {
+  --el-button-bg-color: var(--primary-color);
+  --el-button-border-color: var(--primary-color);
+  --el-button-hover-bg-color: var(--primary-light);
+  --el-button-hover-border-color: var(--primary-light);
+}
+
+.el-menu--horizontal > .el-menu-item.is-active {
+  border-bottom-color: var(--primary-color) !important;
+  color: var(--primary-color) !important;
+}
+
+/* 卡片样式 */
+.page-card {
+  background: var(--card-bg);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+/* 搜索栏 */
+.search-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: flex-end;
+  margin-bottom: 16px;
+}
+
+/* 表格样式 */
+.el-table {
+  border-radius: 6px;
+}
+
+/* 分页 */
+.pagination-wrap {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+/* 状态标签 */
+.el-tag--success { --el-tag-bg-color: #e8f5e9; --el-tag-text-color: #2e7d32; --el-tag-border-color: #c8e6c9; }
+.el-tag--warning { --el-tag-bg-color: #fff3e0; --el-tag-text-color: #e65100; --el-tag-border-color: #ffe0b2; }
+.el-tag--danger { --el-tag-bg-color: #fce4ec; --el-tag-text-color: #c62828; --el-tag-border-color: #f8bbd0; }
+
+/* 响应式布局适配 */
+@media (max-width: 1024px) {
+  .stat-cards { grid-template-columns: repeat(2, 1fr) !important; }
+  .chart-row { grid-template-columns: 1fr !important; }
+}
+
+@media (max-width: 768px) {
+  .stat-cards { grid-template-columns: 1fr !important; }
+  .search-bar { flex-direction: column; align-items: stretch; }
+  .search-bar .el-input, .search-bar .el-select, .search-bar .el-input-number {
+    width: 100% !important;
+  }
+  .el-table { overflow-x: auto; }
+  .page-card { padding: 14px; }
+  .pagination-wrap { justify-content: center; }
+  .el-dialog { width: 90% !important; max-width: 500px; }
+}

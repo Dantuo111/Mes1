@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.mapper.ProductionPlanMapper">
+
+    <resultMap id="BaseResultMap" type="com.app.entity.ProductionPlan">
+        <id column="id" property="id"/>
+        <result column="product_name" property="productName"/>
+        <result column="planned_quantity" property="plannedQuantity"/>
+        <result column="start_time" property="startTime"/>
+        <result column="end_time" property="endTime"/>
+        <result column="priority" property="priority"/>
+        <result column="status" property="status"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+    <select id="selectById" resultMap="BaseResultMap">
+        SELECT * FROM production_plan WHERE id = #{id}
+    </select>
+
+    <select id="selectList" resultMap="BaseResultMap">
+        SELECT * FROM production_plan
+        <where>
+            <if test="keyword != null and keyword != ''">
+                AND product_name LIKE CONCAT('%', #{keyword}, '%')
+            </if>
+            <if test="status != null">
+                AND status = #{status}
+            </if>
+        </where>
+        ORDER BY create_time DESC
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO production_plan (product_name, planned_quantity, start_time, end_time, priority, status)
+        VALUES (#{productName}, #{plannedQuantity}, #{startTime}, #{endTime}, #{priority}, #{status})
+    </insert>
+
+    <update id="updateById">
+        UPDATE production_plan
+        <set>
+            <if test="productName != null">product_name = #{productName},</if>
+            <if test="plannedQuantity != null">planned_quantity = #{plannedQuantity},</if>
+            <if test="startTime != null">start_time = #{startTime},</if>
+            <if test="endTime != null">end_time = #{endTime},</if>
+            <if test="priority != null">priority = #{priority},</if>
+            <if test="status != null">status = #{status},</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM production_plan WHERE id = #{id}
+    </delete>
+
+    <update id="updateStatus">
+        UPDATE production_plan SET status = #{status} WHERE id = #{id}
+    </update>
+
+    <select id="countAll" resultType="int">
+        SELECT COUNT(*) FROM production_plan
+    </select>
+
+</mapper>

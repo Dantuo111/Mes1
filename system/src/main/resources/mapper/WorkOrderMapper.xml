@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.mapper.WorkOrderMapper">
+
+    <resultMap id="BaseResultMap" type="com.app.entity.WorkOrder">
+        <id column="id" property="id"/>
+        <result column="plan_id" property="planId"/>
+        <result column="product_name" property="productName"/>
+        <result column="quantity" property="quantity"/>
+        <result column="assignee_id" property="assigneeId"/>
+        <result column="process_requirement" property="processRequirement"/>
+        <result column="delivery_date" property="deliveryDate"/>
+        <result column="status" property="status"/>
+        <result column="actual_quantity" property="actualQuantity"/>
+        <result column="complete_time" property="completeTime"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="assignee_name" property="assigneeName"/>
+        <result column="plan_product_name" property="planProductName"/>
+    </resultMap>
+
+    <select id="selectById" resultMap="BaseResultMap">
+        SELECT wo.*, u.nickname AS assignee_name
+        FROM work_order wo
+        LEFT JOIN user u ON wo.assignee_id = u.id
+        WHERE wo.id = #{id}
+    </select>
+
+    <select id="selectList" resultMap="BaseResultMap">
+        SELECT wo.*, u.nickname AS assignee_name, pp.product_name AS plan_product_name
+        FROM work_order wo
+        LEFT JOIN user u ON wo.assignee_id = u.id
+        LEFT JOIN production_plan pp ON wo.plan_id = pp.id
+        <where>
+            <if test="status != null">
+                AND wo.status = #{status}
+            </if>
+            <if test="assigneeId != null">
+                AND wo.assignee_id = #{assigneeId}
+            </if>
+        </where>
+        ORDER BY wo.create_time DESC
+    </select>
+
+    <select id="selectByPlanId" resultMap="BaseResultMap">
+        SELECT * FROM work_order WHERE plan_id = #{planId}
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO work_order (plan_id, product_name, quantity, assignee_id, process_requirement, delivery_date, status, actual_quantity, complete_time)
+        VALUES (#{planId}, #{productName}, #{quantity}, #{assigneeId}, #{processRequirement}, #{deliveryDate}, #{status}, #{actualQuantity}, #{completeTime})
+    </insert>
+
+    <update id="updateById">
+        UPDATE work_order
+        <set>
+            <if test="planId != null">plan_id = #{planId},</if>
+            <if test="productName != null">product_name = #{productName},</if>
+            <if test="quantity != null">quantity = #{quantity},</if>
+            <if test="assigneeId != null">assignee_id = #{assigneeId},</if>
+            <if test="processRequirement != null">process_requirement = #{processRequirement},</if>
+            <if test="deliveryDate != null">delivery_date = #{deliveryDate},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="actualQuantity != null">actual_quantity = #{actualQuantity},</if>
+            <if test="completeTime != null">complete_time = #{completeTime},</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM work_order WHERE id = #{id}
+    </delete>
+
+    <update id="updateStatus">
+        UPDATE work_order SET status = #{status} WHERE id = #{id}
+    </update>
+
+    <select id="countAll" resultType="int">
+        SELECT COUNT(*) FROM work_order
+    </select>
+
+    <select id="countByStatus" resultType="int">
+        SELECT COUNT(*) FROM work_order WHERE status = #{status}
+    </select>
+
+</mapper>
